@@ -14,3 +14,8 @@ wheels/
 .env.local
 .env.*.local
 
+# Logs
+logs/
+
+# Ruff cache
+.ruff_cache/
