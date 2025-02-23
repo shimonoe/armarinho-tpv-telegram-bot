@@ -6,6 +6,8 @@ from telegram.ext import ContextTypes
 from src.config import Config
 from src.helpers.qr_code import generate_qr_code
 
+from loguru import logger
+
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     message_type: str = update.message.chat.type
@@ -31,5 +33,6 @@ def handle_user_text(text: str) -> str:
     if not code.isalnum():
         raise ValueError(f"Invalid code format: {code}")
 
+    logger.info(f"Generating QR Code for code: {code.upper()}")
     qr_code = generate_qr_code(code.upper())
     return qr_code
